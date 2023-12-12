@@ -38,42 +38,46 @@ This app uses serverless functions for authorizing access to public calendar eve
 
 ### Feature 2: Show/Hide Event Details
 
-#### Given the event element is collapsed by default,
+- Given the event element is collapsed by default,
 - When I view the event,
 - Then I should see a concise interface.
-#### Given an event is displayed,
+
+- Given an event is displayed,
 - When I choose to expand the event,
 - Then I should see detailed information about the event.
-#### Given an event's details are displayed,
+
+- Given an event's details are displayed,
 - When I choose to collapse the event,
 - Then the details should be hidden to reduce clutter.
 
 ### Feature 3: Specify Number of Events
 
-#### Given I haven't specified the number of events,
+- Given I haven't specified the number of events,
 - When I open the event list,
 - Then 32 events should be displayed by default.
-#### Given the event list is displayed,
+
+- Given the event list is displayed,
 - When I change the number of events to be displayed,
 - Then the event list should update to show the specified number of events.
 
 ### Feature 4: Use the App When Offline
 
-#### Given there is no internet connection,
+- Given there is no internet connection,
 - When I access the app,
 - Then I should see cached data from previous sessions.
-#### Given there is no internet connection,
+
+- Given there is no internet connection,
 - When I try to change search settings,
 - Then I should receive an error message explaining the lack of internet connectivity.
 
 ### Feature 5: Add an App Shortcut to the Home Screen
 
-#### Given I am using the meet app,
+- Given I am using the meet app,
 - When I choose to add the app to my home screen,
 - Then a shortcut to the app should be created on my device's home screen.
 
 ### Feature 6: Display Charts Visualizing Event Details
 
-#### Given I am viewing event details,
+- Given I am viewing event details,
 - When I access the chart section,
 - Then I should see a chart visualizing the number of upcoming events in each city.
