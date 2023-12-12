@@ -2,7 +2,7 @@
   "name": "meetapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lazyjinn1.github.io/meetApp",
+  "homepage": "https://lazyjinn1.github.io/MeetApp",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
