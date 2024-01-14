@@ -33,8 +33,8 @@ const CitySearch = ({ allLocations }) => {
             />
             {showSuggestions ?
                 <ul className="suggestions">
-                    {suggestions.map((suggestion) => {
-                        return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
+                    {suggestions.map((suggestions) => {
+                        return <li onClick={handleItemClicked} key={suggestions}>{suggestions}</li>
                     })}
                     <li key='See all cities' onClick={handleItemClicked}>
                         <b>See all cities</b>

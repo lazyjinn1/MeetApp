@@ -7,8 +7,10 @@ import { getEvents } from '../api';
 
 describe('<EventList /> component', () => {
   let EventListComponent;
-  beforeEach(() => {
-    EventListComponent = render(<EventList />);
+  let mockEvents
+  beforeEach(async () => {
+    mockEvents = await getEvents();
+    EventListComponent = render(<EventList events = {mockEvents}/>);
   })
 
   test('has an element with "list" role', () => {
