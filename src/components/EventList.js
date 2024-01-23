@@ -1,10 +1,11 @@
 import Event from './Event';
 
-const EventList = ({events}) => {
+const EventList = ({ events }) => {
+    // console.log(events);
     return (
         <ul id="event-list">
             {events? 
-                events.map(event => <Event key={event.id} event={event}/>)
+                events.map(events => <Event key={events.id} event={events}/>)
             : null}
         </ul>
     );

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const Event = (event) => {
+const Event = ({ event } ) => {
   const [isExpanded, setExpanded] = useState(false);
 
   const handleToggleDetails = () => {
@@ -16,11 +16,14 @@ const Event = (event) => {
       </div>
       <button onClick={handleToggleDetails}>
         {isExpanded ? 'Collapse Details' : 'Expand Details'}
-        <p>Description: {event.description}</p>
-        <p>Event Date: {event.created}</p>
-        <p>Location: {event.location}</p>
-        
       </button>
+      {isExpanded ? (
+        <div>
+          <p>Description: {event.description}</p>
+          <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
+          <p>Location: {event.location}</p>
+        </div>
+      ) : null}
     </li>
   );
 };
