@@ -10,8 +10,11 @@ import NumberOfEvents from '../components/NumberOfEvents';
 describe('<NumberOfEvents /> component', () => {
 
     beforeEach(() => {
-        render(<NumberOfEvents />);
-    })
+        // Mock function for onNumberOfEventsChange
+        const mockNumberOfEventsChange = jest.fn();
+        render(<NumberOfEvents onNumberOfEventsChange={mockNumberOfEventsChange} />);
+    });
+    
     test('NumberOfEvents component contains an element with role "textbox"', () => {
         const textBoxElement = screen.getByRole('textbox');
         expect(textBoxElement).toBeInTheDocument();

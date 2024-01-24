@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import mockData from './mock-data';
 
 /**
@@ -9,6 +10,14 @@ export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;
+};
+
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
 };
 
 const removeQuery = () => {
@@ -29,7 +38,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
-    'YOUR_GET_ACCESS_TOKEN_ENDPOINT' + '/' + encodeCode
+    'https://00micfpd0a.execute-api.us-west-1.amazonaws.com/dev/api/token' + '/' + encodeCode
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
@@ -37,13 +46,7 @@ const getToken = async (code) => {
   return access_token;
 };
 
-const checkToken = async (accessToken) => {
-  const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  );
-  const result = await response.json();
-  return result;
-};
+
 
 /*This function will fetch the list of all events*/
 export const getEvents = async () => {
@@ -54,7 +57,7 @@ export const getEvents = async () => {
 
   if (token) {
     removeQuery();
-    const url =  "YOUR_GET_EVENTS_API_ENDPOINT" + "/" + token;
+    const url =  "https://00micfpd0a.execute-api.us-west-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
@@ -73,7 +76,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const response = await fetch(
-        "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT"
+        "https://00micfpd0a.execute-api.us-west-1.amazonaws.com/dev/api/get-auth-url"
       );
       const result = await response.json();
       const { authUrl } = result;

@@ -37,7 +37,6 @@ describe('Event Component', () => {
   });
 
   test('displays event location', () => {
-    fireEvent.click(EventComponent.getByText('Expand Details'));
     const locationMatcher = (content, element) =>
       element.tagName.toLowerCase() === 'p' && content.includes('Location:');
     expect(EventComponent.getByText((content, element) => locationMatcher(content, element))).toBeInTheDocument();

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const NumberOfEvents = ({ onNumberOfEventsChange }) => {
     const [eventNumber, setEventNumber] = useState(32);
@@ -10,12 +10,11 @@ const NumberOfEvents = ({ onNumberOfEventsChange }) => {
             setEventNumber(0);
             onNumberOfEventsChange(0);
         } else {
-            const intValue = parseInt(value, 10);
+            const intValue = parseInt(value);
             if (!isNaN(intValue)) {
                 setEventNumber(intValue);
                 onNumberOfEventsChange(intValue);
             } else {
-                // Set the value to 0 if it would otherwise become NaN
                 setEventNumber(0);
             }
         }

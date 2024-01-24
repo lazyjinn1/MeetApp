@@ -13,6 +13,7 @@ const Event = ({ event } ) => {
     <li data-testid="event-element" className={isExpanded ? 'expanded' : 'collapsed'}>
       <div>
         <h3>Title: {event.summary}</h3>
+        <p>Location: {event.location}</p>
       </div>
       <button onClick={handleToggleDetails}>
         {isExpanded ? 'Collapse Details' : 'Expand Details'}
@@ -21,7 +22,7 @@ const Event = ({ event } ) => {
         <div>
           <p>Description: {event.description}</p>
           <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
-          <p>Location: {event.location}</p>
+          
         </div>
       ) : null}
     </li>
