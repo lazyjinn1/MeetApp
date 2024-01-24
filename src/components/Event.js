@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const Event = ({ event } ) => {
+const Event = ({ event }) => {
   const [isExpanded, setExpanded] = useState(false);
 
   const handleToggleDetails = () => {
@@ -22,7 +22,6 @@ const Event = ({ event } ) => {
         <div>
           <p>Description: {event.description}</p>
           <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
-          
         </div>
       ) : null}
     </li>
