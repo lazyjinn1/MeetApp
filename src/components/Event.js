@@ -15,7 +15,7 @@ const Event = ({ event } ) => {
         <h3>Title: {event.summary}</h3>
         <p>Location: {event.location}</p>
       </div>
-      <button onClick={handleToggleDetails}>
+      <button className = 'details-btn'onClick={handleToggleDetails}>
         {isExpanded ? 'Collapse Details' : 'Expand Details'}
       </button>
       {isExpanded ? (
