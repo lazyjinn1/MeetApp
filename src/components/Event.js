@@ -10,20 +10,23 @@ const Event = ({ event }) => {
   };
 
   return (
-    <li data-testid="event-element" className={isExpanded ? 'expanded' : 'collapsed'}>
-      <div>
-        <h3>Title: {event.summary}</h3>
-        <p>Location: {event.location}</p>
-      </div>
-      <button onClick={handleToggleDetails}>
-        {isExpanded ? 'Collapse Details' : 'Expand Details'}
-      </button>
-      {isExpanded ? (
+    <li data-testid='event-element' className={isExpanded ? 'expanded' : 'collapsed'}>
+      <div className='event-element'>
         <div>
-          <p>Description: {event.description}</p>
-          <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
+          <h3 className = 'event-title'>Title: {event.summary}</h3>
+          <p className = 'event-location'>Location: {event.location}</p>
         </div>
-      ) : null}
+        <button className='details-btn' onClick={handleToggleDetails}>
+          {isExpanded ? 'Collapse Details' : 'Expand Details'}
+        </button>
+        {isExpanded ? (
+          <div className='details'>
+            <p>Description: {event.description}</p>
+            <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
+          </div>
+        ) : null}
+      </div>
+
     </li>
   );
 };

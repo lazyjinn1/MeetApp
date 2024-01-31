@@ -5,8 +5,9 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
+    const [isValidCity, setIsValidCity] = useState(true);
 
-    useEffect(()=> {
+    useEffect(() => {
         setSuggestions(allLocations);
     }, [JSON.stringify(allLocations)]);
 
@@ -19,7 +20,8 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         setQuery(value);
         setSuggestions(filteredLocations);
         setShowSuggestions(true);
-        
+
+        setIsValidCity(filteredLocations.length > 0 || value === "");
     };
 
     const handleItemClicked = (event) => {
@@ -33,25 +35,30 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         <div id="city-search">
             <input
                 type="text"
-                className="city"
+                className={`city ${isValidCity ? "" : "invalid-city"}`}
+                id = 'city-search'
                 placeholder="Search for a city"
                 value={query}
                 onFocus={() => setShowSuggestions(true)}
                 onChange={handleInputChanged}
             />
-            {showSuggestions ?
+
+            {showSuggestions && (
                 <ul className="suggestions">
-                    {suggestions.map((suggestions) => {
-                        return <li onClick={handleItemClicked} key={suggestions}>{suggestions}</li>
-                    })}
-                    <li key='See all cities' onClick={handleItemClicked}>
+                    {suggestions.map((suggestion) => (
+                        <li onClick={handleItemClicked} key={suggestion}>
+                            {suggestion}
+                        </li>
+                    ))}
+                    <li key="See all cities" onClick={handleItemClicked}>
                         <b>See all cities</b>
                     </li>
                 </ul>
-                : null
-            }
+            )}
+            {!isValidCity && (
+                <div className="error-message" data-testid="invalid-city-message">Invalid city. Please enter a valid city.</div>
+            )}
         </div>
     )
-}
-
+};
 export default CitySearch;
