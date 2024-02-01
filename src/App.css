@@ -17,6 +17,18 @@ p {
   margin: 5px 0;
 }
 
+button{
+  transition: all .5s;
+}
+
+button:hover {
+  transform: scale(1.5);
+}
+
+button:active {
+  transform: scale(1);
+}
+
 input[type="text"],
 input[type="number"] {
   padding: 8px 6px 8px 10px;
@@ -66,16 +78,30 @@ input[type="number"] {
 
 .suggestions > li:hover {
   background-color: #bcdcdb;
+  cursor: pointer;
 }
 
 .event-element {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  text-align: center;
+  border: none;
   position: relative;
+  font-size: 125%;
+  transition: all 1.25s ease;
 }
+
+.expanded {
+  background-color: #d44127;
+  border-radius: 25% 50%;
+}
+
+.collapsed {
+  background-color: #02142b;
+  color: white;
+  border-radius: 25% 50%;
+}
+
 
 .details-btn {
   position: absolute;
@@ -85,4 +111,5 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  scale: 1.25;
 }
