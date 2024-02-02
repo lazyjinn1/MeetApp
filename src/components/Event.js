@@ -10,19 +10,20 @@ const Event = ({ event }) => {
   };
 
   return (
-    <li data-testid='event-element' className={isExpanded ? 'expanded' : 'collapsed'}>
+    <li data-testid='event-element' id = 'event-element' className={isExpanded ? 'expanded' : 'collapsed'}>
       <div className='event-element'>
         <div>
-          <h3 className = 'event-title'>Title: {event.summary}</h3>
-          <p className = 'event-location'>Location: {event.location}</p>
+          <h3 className = 'event-title'>{event.summary}</h3>
+          
         </div>
         <button className='details-btn' onClick={handleToggleDetails}>
           {isExpanded ? 'Collapse Details' : 'Expand Details'}
         </button>
         {isExpanded ? (
           <div className='details'>
+            <p className = 'event-location'>{event.location}</p>
             <p className = 'event-description'>{event.description}</p>
-            <p className = 'event-date'>Event Date: {(new Date(event.created)).toUTCString()}</p>
+            <p className = 'event-date'>{(new Date(event.created)).toUTCString()}</p>
           </div>
         ) : null}
       </div>
