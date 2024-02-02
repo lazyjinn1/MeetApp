@@ -21,8 +21,8 @@ const Event = ({ event }) => {
         </button>
         {isExpanded ? (
           <div className='details'>
-            <p>Description: {event.description}</p>
-            <p>Event Date: {(new Date(event.created)).toUTCString()}</p>
+            <p className = 'event-description'>{event.description}</p>
+            <p className = 'event-date'>Event Date: {(new Date(event.created)).toUTCString()}</p>
           </div>
         ) : null}
       </div>
