@@ -1,15 +1,37 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const CitySearch = ({ allLocations, setCurrentCity }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
-    const [isValidCity, setIsValidCity] = useState(true);
+    
+    const suggestionBoxRef = useRef(null);
 
     useEffect(() => {
         setSuggestions(allLocations);
     }, [JSON.stringify(allLocations)]);
+
+    useEffect(() => {
+        const handleKeyPress = (e) => {
+            if (e.key === 'Escape') {
+                handleHideSuggestions();
+            }
+        };
+        const handleClickOutside = (e) => {
+            if (suggestionBoxRef.current && !suggestionBoxRef.current.contains(e.target)) {
+                handleHideSuggestions();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        window.addEventListener('click', handleClickOutside);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
@@ -21,7 +43,13 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         setSuggestions(filteredLocations);
         setShowSuggestions(true);
 
-        setIsValidCity(filteredLocations.length > 0 || value === "");
+        let infoText;
+        if (filteredLocations.length === 0) {
+            infoText = "We cannot find the city that you're looking for. Please check your spelling or try another city."
+        } else {
+            infoText = "";
+        }
+        setInfoAlert(infoText);
     };
 
     const handleItemClicked = (event) => {
@@ -31,12 +59,16 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         setCurrentCity(value);
     };
 
+    const handleHideSuggestions = () => {
+        setShowSuggestions(false);
+    }
+
     return (
-        <div id="city-search">
+        <div id="city-search" ref={suggestionBoxRef}>
             <input
                 type="text"
-                className={`city ${isValidCity ? "" : "invalid-city"}`}
-                id = 'city-search'
+                id='city-search'
+                className='city'
                 placeholder="Search for a city"
                 value={query}
                 onFocus={() => setShowSuggestions(true)}
@@ -55,10 +87,9 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
                     </li>
                 </ul>
             )}
-            {!isValidCity && (
-                <div className="error-message" data-testid="invalid-city-message">Invalid city. Please enter a valid city.</div>
-            )}
+
         </div>
     )
 };
+
 export default CitySearch;

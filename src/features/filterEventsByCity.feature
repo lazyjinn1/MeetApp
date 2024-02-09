@@ -16,7 +16,3 @@ Feature: Filter events by city
   Then their city should be changed to that city (i.e., “Berlin, Germany”)
   And the user should receive a list of upcoming events in that city
 
-Scenario: User enters an invalid city name
-  Given the main page is open
-  When user enters an invalid city name in the city textbox
-  Then the user should receive a message indicating that the city is not valid

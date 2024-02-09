@@ -14,6 +14,7 @@ describe('<CitySearch/> component', () => {
     CitySearchComponent = render(<CitySearch 
       allLocations={[]} 
       setCurrentCity={() => {}}
+      setInfoAlert={() => {}}
     />);
   })
 
@@ -45,6 +46,7 @@ describe('<CitySearch/> component', () => {
     CitySearchComponent.rerender(<CitySearch 
       allLocations={allLocations} 
       setCurrentCity={() => {}}
+      setInfoAlert={() => {}}
     />);
 
     // user types "Berlin" in city textbox
@@ -71,6 +73,7 @@ describe('<CitySearch/> component', () => {
     CitySearchComponent.rerender(<CitySearch 
       allLocations={allLocations} 
       setCurrentCity={() => {}}
+      setInfoAlert={() => {}}
     />);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');

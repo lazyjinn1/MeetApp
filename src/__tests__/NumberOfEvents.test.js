@@ -12,7 +12,10 @@ describe('<NumberOfEvents /> component', () => {
     beforeEach(() => {
         // Mock function for onNumberOfEventsChange
         const mockNumberOfEventsChange = jest.fn();
-        render(<NumberOfEvents onNumberOfEventsChange={mockNumberOfEventsChange} />);
+        render(<NumberOfEvents 
+            onNumberOfEventsChange={mockNumberOfEventsChange} 
+            setErrorAlert={() => {}}
+        />);
     });
     
     test('NumberOfEvents component contains an element with role "textbox"', () => {

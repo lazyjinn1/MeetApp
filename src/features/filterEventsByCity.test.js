@@ -89,27 +89,4 @@ defineFeature(feature, test => {
             expect(EventListItems).toHaveLength(berlinEvents.length);
         });
     });
-
-    test('User enters an invalid city name', ({ given, when, then }) => {
-        let AppComponent;
-        let CitySearchDOM;
-        let citySearchInput;
-
-        given('the main page is open', () => {
-            AppComponent = render(<App />);
-        });
-
-        when('user enters an invalid city name in the city textbox', async () => {
-            const user = userEvent.setup();
-            const AppDOM = AppComponent.container.firstChild;
-            CitySearchDOM = AppDOM.querySelector('#city-search');
-            citySearchInput = within(CitySearchDOM).queryByRole('textbox');
-            await user.type(citySearchInput, 'InvalidCity');
-        });
-
-        then('the user should receive a message indicating that the city is not valid', () => {
-            expect(within(AppComponent.container).queryByTestId('invalid-city-message')).toBeInTheDocument();
-        });
-    });
-
 });

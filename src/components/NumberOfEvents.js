@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-const NumberOfEvents = ({ onNumberOfEventsChange }) => {
+const NumberOfEvents = ({ onNumberOfEventsChange, setErrorAlert }) => {
     const [eventNumber, setEventNumber] = useState(32);
+    var [errorText, setErrorText] = useState('');
 
     const handleInputChange = (event) => {
         const value = event.target.value;
@@ -9,15 +10,24 @@ const NumberOfEvents = ({ onNumberOfEventsChange }) => {
             // Set the value to 0 for an empty string
             setEventNumber(0);
             onNumberOfEventsChange(0);
+            clearError();
         } else {
             const intValue = parseInt(value);
             if (!isNaN(intValue)) {
                 setEventNumber(intValue);
                 onNumberOfEventsChange(intValue);
+                clearError();
             } else {
+                errorText = "Please enter a valid number";
                 setEventNumber(0);
+                setErrorAlert(errorText);
+                setErrorText(errorText);
             }
         }
+    }
+    const clearError = () => {
+        setErrorAlert('');
+        setErrorText('');
     }
 
     return (

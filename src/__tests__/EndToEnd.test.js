@@ -78,8 +78,8 @@ describe('show/hide an event details', () => {
                 return event.querySelector('.event-location').textContent;
             });
         });
-        
-        // Assert that none of the locations match 'Berlin, Germany'
+
+        // Assert that locations match 'Berlin, Germany'
         for (const locationText of events) {
             expect(locationText).toBe('Location: Berlin, Germany');
         }
