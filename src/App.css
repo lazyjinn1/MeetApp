@@ -177,8 +177,8 @@ input[type="number"] {
   }
 
   .alerts-container{
-    left: 20%;
-    top: 20%;
+    right: 20px;
+    bottom: 0;
   }
 
   #event-element{
