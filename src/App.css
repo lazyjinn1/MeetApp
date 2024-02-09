@@ -113,14 +113,6 @@ input[type="number"] {
   transition: all 1s ease;
 }
 
-.event-description{
-  font-family: 'Lilita One', sans-serif;
-}
-
-.event-date, .event-location{
-  font-weight: bold;
-}
-
 .expanded {
   background-image: linear-gradient( #02142b, white, white, white, #02142b);
   color: #02142b;
@@ -158,4 +150,62 @@ input[type="number"] {
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.event-date, .event-description, .event-location{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.event-date, .event-location{
+  font-weight: bolder;
+}
+
+@media (max-width: 800px){
+  .expanded, .collapsed{
+    border-radius: 40px;
+    margin: 5px 5px;
+    padding: 5px;
+  }
+
+  .expanded{
+    background-image: linear-gradient(white, white, white, #02142b);
+  }
+
+  .event-element{
+    padding: 10px;
+    padding-bottom: 25px;
+  }
+
+  .alerts-container{
+    left: 20%;
+    top: 20%;
+  }
+
+  #event-element{
+    margin: 10px 0;
+  }
+
+
+  .expanded .event-title{
+    scale: 1;
+  }
+
+  .details-btn{
+    scale: 1;
+    padding: 2px;
+    margin: 0;
+    bottom: 0;
+    color: black;
+  }
+
+  .event-date, .event-description, .event-location{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0;
+    font-size: 75%;
+  }
+
+  .event-title{
+    font-size: 125%;
+    transition: all .5s ease;
+  }
 }
