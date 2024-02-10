@@ -160,6 +160,11 @@ input[type="number"] {
   font-weight: bolder;
 }
 
+.charts-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (max-width: 800px){
   .expanded, .collapsed{
     border-radius: 40px;
@@ -209,5 +214,9 @@ input[type="number"] {
   .event-title{
     font-size: 125%;
     transition: all .5s ease;
+  }
+
+  .charts-container{
+    grid-template-columns: 1fr;
   }
 }
