@@ -1,83 +1,63 @@
 # Meet App
 
-## Project description
 A serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique.
 
-## The API the project uses
-The application uses the Google Calendar API to fetch upcoming events.
+## Table of Contents
+
+- [Screenshots](#screenshots)
+- [Serverless Functions](#serverless-functions)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [API](#api)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Screenshots
+![plot](./assets/screenshots/screenshot1.png)
 
 ## Serverless Functions
 This app uses serverless functions for authorizing access to public calendar events from the Google Calendar API. The user enters a key and secret to ask for an access token from the authorization server. The server informs the user with a consent screen. When the user agrees by logging into their Google account and giving consent, the app can fetch and show the calendar events.
 
-## Key Features:
+## Features
 
-### Feature 2: Show/Hide Event Details
+- Connects to Google's Calendar API to showcase events from any calendar.
+- Filter by Location
+- Change number of events
+- View graphs that change based on filter criteria
 
-- As a user, I should be able to see an event element collapsed by default, so that the interface remains uncluttered.
-- As a user, I should be able to expand an event to see its details, so that I can learn more about events I'm interested in.
-- As a user, I should be able to collapse an event to hide its details, so that I can minimize information overload.
+### Prerequisites
 
-### Feature 3: Specify Number of Events
+To run this MeetApp, you need a web browser with JavaScript enabled. Other dependencies are listed under
+package.json.
 
-- As a user, I should see 32 events by default when I haven't specified a number, so that I have a manageable number of events to browse initially.
-- As a user, I should be able to change the number of events displayed, so that I can customize my viewing experience according to my preferences.
+## API
+The application uses the Google Calendar API to fetch upcoming events.
 
-### Feature 4: Use the App When Offline
+### Installation
 
-- As a user, I should be able to see cached data when there’s no internet connection, so that I can access information offline.
-- As a user, I should be shown an error when I change search settings (like city, number of events) without an internet connection, so that I understand why the app isn't functioning as expected.
+1. Clone or download the repository to your local machine.
+2. install all dependencies
+3. run npm start or expo start
 
-### Feature 5: Add an App Shortcut to the Home Screen
+Alternatively:
+1. open up the website link: https://lazyjinn1.github.io/MeetApp/
 
-- As a user, I should be able to install the meet app as a shortcut on my device’s home screen, so that I can quickly and easily access the app.
+## Usage
 
-### Feature 6: Display Charts Visualizing Event Details
+1. Start viewing the events that load up 
+2. Click Expand details to show more information on the event
+3. Play around with the location and number of events filters
+4. See changes in real-time.
+5. Go offline to test the app's offline features and connectivity.
 
-- As a user, I should be able to view a chart with the number of upcoming events in each city, so that I can visually understand event distribution and plan accordingly.
+## Contributing
 
+Contributions to the MeetApp are welcome! If you have any suggestions, bug fixes, or feature enhancements, feel free to open an issue or submit a pull request.
 
-### Feature 2: Show/Hide Event Details
+Before contributing, please review the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-- Given the event element is collapsed by default,
-- When I view the event,
-- Then I should see a concise interface.
+## License
 
-- Given an event is displayed,
-- When I choose to expand the event,
-- Then I should see detailed information about the event.
-
-- Given an event's details are displayed,
-- When I choose to collapse the event,
-- Then the details should be hidden to reduce clutter.
-
-### Feature 3: Specify Number of Events
-
-- Given I haven't specified the number of events,
-- When I open the event list,
-- Then 32 events should be displayed by default.
-
-- Given the event list is displayed,
-- When I change the number of events to be displayed,
-- Then the event list should update to show the specified number of events.
-
-### Feature 4: Use the App When Offline
-
-- Given there is no internet connection,
-- When I access the app,
-- Then I should see cached data from previous sessions.
-
-- Given there is no internet connection,
-- When I try to change search settings,
-- Then I should receive an error message explaining the lack of internet connectivity.
-
-### Feature 5: Add an App Shortcut to the Home Screen
-
-- Given I am using the meet app,
-- When I choose to add the app to my home screen,
-- Then a shortcut to the app should be created on my device's home screen.
-
-### Feature 6: Display Charts Visualizing Event Details
-
-- Given I am viewing event details,
-- When I access the chart section,
-- Then I should see a chart visualizing the number of upcoming events in each city.
+MeetApp is an open-source software licensed under the [MIT License](LICENSE).
